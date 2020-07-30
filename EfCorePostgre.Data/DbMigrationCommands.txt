@@ -1,0 +1,18 @@
+﻿
+PM > enable-migrations
+
+-- Create Migrations
+PM> dotnet ef migrations add InitialCreate --project EfCorePostgre.Data
+Build started...
+Build succeeded.
+Done. To undo this action, use 'ef migrations remove'
+
+-- Update Database
+PM> dotnet ef database update --project EfCorePostgre.Data
+Build started...
+Build succeeded.
+Applying migration '20200724115651_InitialCreate'.
+Done.
+
+-- Rollback
+PM> dotnet ef migrations remove --project EfCorePostgre.Data
