@@ -18,8 +18,10 @@ PM> dotnet ef migrations remove --project <Project Name>
 ```
 ## Projects
 
-EfCorePostgre.Core      : Base                      <br>
-EfCorePostgre.Data      : Entities (Isolated layer) <br>
-EfCorePostgre.Dto       : Data transfer objects     <br>
-EfCorePostgre.Services  : Business Layer            <br>
-EfCorePostgre.API       : Web API                   <br>
+| Project                 | Description               |
+| ---                     | ----                      |
+| EfCorePostgre.Core      | Base                      |
+| EfCorePostgre.Data      | Entities (Isolated layer) |
+| EfCorePostgre.Dto       | Data transfer objects     |
+| EfCorePostgre.Services  | Business Layer            |
+| EfCorePostgre.API       | Web API                   |
