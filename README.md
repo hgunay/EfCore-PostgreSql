@@ -16,3 +16,10 @@ PM> dotnet ef database update --project <Project Name>
 -- Rollback
 PM> dotnet ef migrations remove --project <Project Name>
 ```
+## Projects
+
+EfCorePostgre.Core      : Base                      <br>
+EfCorePostgre.Data      : Entities (Isolated layer) <br>
+EfCorePostgre.Dto       : Data transfer objects     <br>
+EfCorePostgre.Services  : Business Layer            <br>
+EfCorePostgre.API       : Web API                   <br>
