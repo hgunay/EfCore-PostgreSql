@@ -1,6 +1,6 @@
 # Code First DB Design with EF Core &amp; PostgreSQL
 
-Sample project for code first database design using the **Entity Framework Core** and **PostgreSQL**.
+Sample project for code first database design using the **Entity Framework Core** and **PostgreSQL** with Repository Pattern.
 
 > .NET Core version > 3.1
 
