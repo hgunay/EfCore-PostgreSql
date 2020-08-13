@@ -121,13 +121,13 @@ namespace EfCorePostgre.Data.Migrations
                 schema: "public",
                 table: "permission",
                 columns: new[] { "id", "created_dateTime", "created_userId", "description", "is_active", "is_deleted", "name", "permission_typeId", "updated_dateTime", "updated_userId" },
-                values: new object[] { 1L, new DateTime(2020, 7, 30, 22, 55, 59, 91, DateTimeKind.Utc).AddTicks(2471), 0L, "Permission 1 Açıklaması", true, false, "Permission 1", 1, null, null });
+                values: new object[] { 1L, new DateTime(2020, 8, 13, 21, 52, 9, 910, DateTimeKind.Utc).AddTicks(2878), 0L, "Permission 1 Açıklaması", true, false, "Permission 1", 1, null, null });
 
             migrationBuilder.InsertData(
                 schema: "public",
                 table: "role",
                 columns: new[] { "id", "created_dateTime", "created_userId", "description", "is_active", "is_deleted", "name", "updated_dateTime", "updated_userId" },
-                values: new object[] { 1L, new DateTime(2020, 7, 30, 22, 55, 59, 86, DateTimeKind.Utc).AddTicks(789), 0L, "Role 1 Açıklaması", true, false, "Role 1", null, null });
+                values: new object[] { 1L, new DateTime(2020, 8, 13, 21, 52, 9, 909, DateTimeKind.Utc).AddTicks(3731), 0L, "Role 1 Açıklaması", true, false, "Role 1", null, null });
 
             migrationBuilder.InsertData(
                 schema: "public",
@@ -139,13 +139,13 @@ namespace EfCorePostgre.Data.Migrations
                 schema: "public",
                 table: "user_permission",
                 columns: new[] { "id", "created_dateTime", "created_userId", "is_active", "is_deleted", "permission_id", "updated_dateTime", "updated_userId", "user_id" },
-                values: new object[] { 1L, new DateTime(2020, 7, 30, 22, 55, 59, 94, DateTimeKind.Utc).AddTicks(3852), 0L, true, false, 1L, null, null, 1L });
+                values: new object[] { 1L, new DateTime(2020, 8, 13, 21, 52, 9, 910, DateTimeKind.Utc).AddTicks(6777), 0L, true, false, 1L, null, null, 1L });
 
             migrationBuilder.InsertData(
                 schema: "public",
                 table: "user_role",
                 columns: new[] { "id", "created_dateTime", "created_userId", "is_active", "is_deleted", "role_id", "updated_dateTime", "updated_userId", "user_id" },
-                values: new object[] { 1L, new DateTime(2020, 7, 30, 22, 55, 59, 93, DateTimeKind.Utc).AddTicks(364), 0L, true, false, 1L, null, null, 1L });
+                values: new object[] { 1L, new DateTime(2020, 8, 13, 21, 52, 9, 910, DateTimeKind.Utc).AddTicks(5894), 0L, true, false, 1L, null, null, 1L });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

@@ -72,7 +72,7 @@ namespace EfCorePostgre.Data.Migrations
                         new
                         {
                             Id = 1L,
-                            CreatedDateTime = new DateTime(2020, 7, 30, 22, 55, 59, 91, DateTimeKind.Utc).AddTicks(2471),
+                            CreatedDateTime = new DateTime(2020, 8, 13, 21, 52, 9, 910, DateTimeKind.Utc).AddTicks(2878),
                             CreatedUserId = 0L,
                             Description = "Permission 1 Açıklaması",
                             IsActive = true,
@@ -130,7 +130,7 @@ namespace EfCorePostgre.Data.Migrations
                         new
                         {
                             Id = 1L,
-                            CreatedDateTime = new DateTime(2020, 7, 30, 22, 55, 59, 86, DateTimeKind.Utc).AddTicks(789),
+                            CreatedDateTime = new DateTime(2020, 8, 13, 21, 52, 9, 909, DateTimeKind.Utc).AddTicks(3731),
                             CreatedUserId = 0L,
                             Description = "Role 1 Açıklaması",
                             IsActive = true,
@@ -256,7 +256,7 @@ namespace EfCorePostgre.Data.Migrations
                         new
                         {
                             Id = 1L,
-                            CreatedDateTime = new DateTime(2020, 7, 30, 22, 55, 59, 94, DateTimeKind.Utc).AddTicks(3852),
+                            CreatedDateTime = new DateTime(2020, 8, 13, 21, 52, 9, 910, DateTimeKind.Utc).AddTicks(6777),
                             CreatedUserId = 0L,
                             IsActive = true,
                             IsDeleted = false,
@@ -313,7 +313,7 @@ namespace EfCorePostgre.Data.Migrations
                         new
                         {
                             Id = 1L,
-                            CreatedDateTime = new DateTime(2020, 7, 30, 22, 55, 59, 93, DateTimeKind.Utc).AddTicks(364),
+                            CreatedDateTime = new DateTime(2020, 8, 13, 21, 52, 9, 910, DateTimeKind.Utc).AddTicks(5894),
                             CreatedUserId = 0L,
                             IsActive = true,
                             IsDeleted = false,

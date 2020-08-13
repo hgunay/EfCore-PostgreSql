@@ -1,4 +1,4 @@
-﻿namespace EfCorePostgre.Data.Entity
+﻿namespace EfCorePostgre.Core.Data.Entity
 {
     using System;
     using System.ComponentModel.DataAnnotations;

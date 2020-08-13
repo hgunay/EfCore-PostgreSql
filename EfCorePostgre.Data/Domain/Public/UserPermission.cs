@@ -4,7 +4,7 @@
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Runtime.Serialization;
 
-    using EfCorePostgre.Data.Entity;
+    using EfCorePostgre.Core.Data.Entity;
 
     /// <summary>The user permission.</summary>
     [Serializable]

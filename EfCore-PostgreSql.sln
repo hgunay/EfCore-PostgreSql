@@ -3,7 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30320.27
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EfCorePostgre.Data", "EfCorePostgre.Data\EfCorePostgre.Data.csproj", "{E4BCDFDA-31CB-4008-B8FC-54DDCD9F878A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EfCorePostgre.Data", "EfCorePostgre.Data\EfCorePostgre.Data.csproj", "{E4BCDFDA-31CB-4008-B8FC-54DDCD9F878A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EfCorePostgre.Core", "EfCorePostgre.Core\EfCorePostgre.Core.csproj", "{265A544D-49F7-4C04-BC2D-1682BEEBFC6C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EfCorePostgre.Services", "EfCorePostgre.Services\EfCorePostgre.Services.csproj", "{3B10B752-AB09-4CE7-8D28-A7800805C995}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EfCorePostgre.API", "EfCorePostgre.API\EfCorePostgre.API.csproj", "{9842E1E5-0CA5-4996-B723-C99278267D80}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EfCorePostgre.Dto", "EfCorePostgre.Dto\EfCorePostgre.Dto.csproj", "{DD441E51-4BAA-4910-B714-8823AA4F42D1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +23,22 @@ Global
 		{E4BCDFDA-31CB-4008-B8FC-54DDCD9F878A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E4BCDFDA-31CB-4008-B8FC-54DDCD9F878A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E4BCDFDA-31CB-4008-B8FC-54DDCD9F878A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{265A544D-49F7-4C04-BC2D-1682BEEBFC6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{265A544D-49F7-4C04-BC2D-1682BEEBFC6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{265A544D-49F7-4C04-BC2D-1682BEEBFC6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{265A544D-49F7-4C04-BC2D-1682BEEBFC6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B10B752-AB09-4CE7-8D28-A7800805C995}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B10B752-AB09-4CE7-8D28-A7800805C995}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B10B752-AB09-4CE7-8D28-A7800805C995}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B10B752-AB09-4CE7-8D28-A7800805C995}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9842E1E5-0CA5-4996-B723-C99278267D80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9842E1E5-0CA5-4996-B723-C99278267D80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9842E1E5-0CA5-4996-B723-C99278267D80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9842E1E5-0CA5-4996-B723-C99278267D80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD441E51-4BAA-4910-B714-8823AA4F42D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD441E51-4BAA-4910-B714-8823AA4F42D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD441E51-4BAA-4910-B714-8823AA4F42D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD441E51-4BAA-4910-B714-8823AA4F42D1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

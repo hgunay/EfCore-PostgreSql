@@ -1,6 +1,5 @@
 ﻿namespace EfCorePostgre.Data
 {
-    using System.Diagnostics.CodeAnalysis;
     using System.IO;
 
     using EfCorePostgre.Data.Domain.Public;
