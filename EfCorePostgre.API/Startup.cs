@@ -4,7 +4,9 @@ namespace EfCorePostgre.API
 
     using EfCorePostgre.Core.Data.Repository;
     using EfCorePostgre.Data;
+    using EfCorePostgre.Services.Permission;
     using EfCorePostgre.Services.Role;
+    using EfCorePostgre.Services.User;
 
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
@@ -23,7 +25,6 @@ namespace EfCorePostgre.API
         /// <summary>Gets the configuration.</summary>
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         /// <summary>The configure services.</summary>
         /// <param name="services">The services.</param>
         public void ConfigureServices(IServiceCollection services)
@@ -35,17 +36,21 @@ namespace EfCorePostgre.API
             // Db Connection
             services.AddScoped<DbContext, EfCorePostgreContext>();
 
-            var builder = new ConfigurationBuilder().SetBasePath(Path.Combine(Directory.GetCurrentDirectory()))
-                                                    .AddJsonFile("appsettings.json", false)
-                                                    .Build();
+            var settingsPath = Path.Combine(Directory.GetCurrentDirectory());
 
-            services.AddDbContext<EfCorePostgreContext>(optionsBuilder => optionsBuilder.UseNpgsql(builder.GetConnectionString("SampleDbConnection")));
+            if (!string.IsNullOrEmpty(settingsPath))
+            {
+                var builder = new ConfigurationBuilder().SetBasePath(settingsPath).AddJsonFile("appsettings.json", false).Build();
+
+                services.AddDbContext<EfCorePostgreContext>(optionsBuilder => optionsBuilder.UseNpgsql(builder.GetConnectionString("SampleDbConnection")));
+            }
 
             // Services
             services.AddScoped<IRoleService, RoleService>();
+            services.AddScoped<IPermissionService, PermissionService>();
+            services.AddScoped<IUserService, UserService>();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         /// <summary>The configure.</summary>
         /// <param name="app">The app.</param>
         /// <param name="env">The env.</param>
@@ -59,10 +64,10 @@ namespace EfCorePostgre.API
             app.UseRouting();
 
             app.UseEndpoints(
-                    endpoints =>
-                        {
-                            endpoints.MapControllerRoute("default", "{controller}/{action=Index}/{id?}");
-                        });
+                endpoints =>
+                    {
+                        endpoints.MapControllerRoute("default", "{controller}/{action=Index}/{id?}");
+                    });
         }
     }
 }

@@ -10,7 +10,7 @@
     /// <summary>The AsyncRepository interface.</summary>
     /// <typeparam name="TEntity">Entity type.</typeparam>
     public interface IRepositoryAsync<TEntity>
-            where TEntity : AuditEntity
+            where TEntity : BaseEntity
     {
         /// <summary>The find by ıd.</summary>
         /// <param name="id">The id.</param>
@@ -25,7 +25,7 @@
         /// <summary>The update.</summary>
         /// <param name="entity">The entity.</param>
         /// <returns>The <see cref="Task"/>.</returns>
-        Task<TEntity> Update(TEntity entity);
+        Task<long> Update(TEntity entity);
 
         /// <summary>The delete.</summary>
         /// <param name="id">The id.</param>

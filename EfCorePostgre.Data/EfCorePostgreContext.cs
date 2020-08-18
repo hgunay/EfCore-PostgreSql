@@ -47,7 +47,7 @@
             var builder = new ConfigurationBuilder().SetBasePath(Path.Combine(Directory.GetCurrentDirectory()))
                                                     .AddJsonFile("appsettings.json", false)
                                                     .Build();
-
+            
             optionsBuilder.UseNpgsql(builder.GetConnectionString("SampleDbConnection"));
         }
 
@@ -55,6 +55,8 @@
         /// <param name="modelBuilder">The model builder.</param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.UseIdentityColumns();
+
             modelBuilder.HasDefaultSchema("public");
 
             modelBuilder.Seed();

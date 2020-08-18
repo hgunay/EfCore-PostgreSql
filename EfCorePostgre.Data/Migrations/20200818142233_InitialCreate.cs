@@ -94,6 +94,20 @@ namespace EfCorePostgre.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_user_permission", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_user_permission_permission_permission_id",
+                        column: x => x.permission_id,
+                        principalSchema: "public",
+                        principalTable: "permission",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_user_permission_user_user_id",
+                        column: x => x.user_id,
+                        principalSchema: "public",
+                        principalTable: "user",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -115,41 +129,87 @@ namespace EfCorePostgre.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_user_role", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_user_role_role_role_id",
+                        column: x => x.role_id,
+                        principalSchema: "public",
+                        principalTable: "role",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_user_role_user_user_id",
+                        column: x => x.user_id,
+                        principalSchema: "public",
+                        principalTable: "user",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
                 schema: "public",
                 table: "permission",
                 columns: new[] { "id", "created_dateTime", "created_userId", "description", "is_active", "is_deleted", "name", "permission_typeId", "updated_dateTime", "updated_userId" },
-                values: new object[] { 1L, new DateTime(2020, 8, 13, 21, 52, 9, 910, DateTimeKind.Utc).AddTicks(2878), 0L, "Permission 1 Açıklaması", true, false, "Permission 1", 1, null, null });
+                values: new object[] { 1L, new DateTime(2020, 8, 18, 14, 22, 33, 244, DateTimeKind.Utc).AddTicks(3969), 0L, "Permission 1 Açıklaması", true, false, "Permission 1", 1, null, null });
 
             migrationBuilder.InsertData(
                 schema: "public",
                 table: "role",
                 columns: new[] { "id", "created_dateTime", "created_userId", "description", "is_active", "is_deleted", "name", "updated_dateTime", "updated_userId" },
-                values: new object[] { 1L, new DateTime(2020, 8, 13, 21, 52, 9, 909, DateTimeKind.Utc).AddTicks(3731), 0L, "Role 1 Açıklaması", true, false, "Role 1", null, null });
+                values: new object[] { 1L, new DateTime(2020, 8, 18, 14, 22, 33, 242, DateTimeKind.Utc).AddTicks(9950), 0L, "Role 1 Açıklaması", true, false, "Role 1", null, null });
 
             migrationBuilder.InsertData(
                 schema: "public",
                 table: "user",
                 columns: new[] { "id", "email", "first_name", "is_active", "is_deleted", "is_passwordChangeFirstLogin", "last_name", "password", "password_salt" },
-                values: new object[] { 1L, "admin@test.com", "Admin", true, false, true, "Admin", "Admin123", "Admin123" });
+                values: new object[] { 1L, "admin@test.com", "Admin", true, false, true, "Admin", "KpkyZuPFMt/IZXatYgtN8scz+XU=", "0jPr9cdRgNguTizz9tGpU2rRbRfE3oXw0/HrsqZbXAXGq2lrsAUb1IqzJn5iHpbqoD9CW92jBimYFS8SJ6wStw==" });
 
             migrationBuilder.InsertData(
                 schema: "public",
                 table: "user_permission",
                 columns: new[] { "id", "created_dateTime", "created_userId", "is_active", "is_deleted", "permission_id", "updated_dateTime", "updated_userId", "user_id" },
-                values: new object[] { 1L, new DateTime(2020, 8, 13, 21, 52, 9, 910, DateTimeKind.Utc).AddTicks(6777), 0L, true, false, 1L, null, null, 1L });
+                values: new object[] { 1L, new DateTime(2020, 8, 18, 14, 22, 33, 249, DateTimeKind.Utc).AddTicks(5360), 0L, true, false, 1L, null, null, 1L });
 
             migrationBuilder.InsertData(
                 schema: "public",
                 table: "user_role",
                 columns: new[] { "id", "created_dateTime", "created_userId", "is_active", "is_deleted", "role_id", "updated_dateTime", "updated_userId", "user_id" },
-                values: new object[] { 1L, new DateTime(2020, 8, 13, 21, 52, 9, 910, DateTimeKind.Utc).AddTicks(5894), 0L, true, false, 1L, null, null, 1L });
+                values: new object[] { 1L, new DateTime(2020, 8, 18, 14, 22, 33, 249, DateTimeKind.Utc).AddTicks(3950), 0L, true, false, 1L, null, null, 1L });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_user_permission_permission_id",
+                schema: "public",
+                table: "user_permission",
+                column: "permission_id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_user_permission_user_id",
+                schema: "public",
+                table: "user_permission",
+                column: "user_id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_user_role_role_id",
+                schema: "public",
+                table: "user_role",
+                column: "role_id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_user_role_user_id",
+                schema: "public",
+                table: "user_role",
+                column: "user_id");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "user_permission",
+                schema: "public");
+
+            migrationBuilder.DropTable(
+                name: "user_role",
+                schema: "public");
+
             migrationBuilder.DropTable(
                 name: "permission",
                 schema: "public");
@@ -160,14 +220,6 @@ namespace EfCorePostgre.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "user",
-                schema: "public");
-
-            migrationBuilder.DropTable(
-                name: "user_permission",
-                schema: "public");
-
-            migrationBuilder.DropTable(
-                name: "user_role",
                 schema: "public");
         }
     }

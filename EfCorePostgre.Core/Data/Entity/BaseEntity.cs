@@ -14,7 +14,7 @@
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [DataMember]
-        [Column("id")]
+        [Column("id", Order = 0)]
         public long Id { get; set; }
 
         /// <summary>Gets or sets a value indicating whether ıs active.</summary>

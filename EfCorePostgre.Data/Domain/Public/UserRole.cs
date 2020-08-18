@@ -17,9 +17,17 @@
         [Column("user_id")]
         public long UserId { get; set; }
 
+        /// <summary>Gets or sets the user.</summary>
+        [ForeignKey("UserId")]
+        public virtual User User { get; set; }
+
         /// <summary>Gets or sets the role ıd.</summary>
         [DataMember]
         [Column("role_id")]
         public long RoleId { get; set; }
+
+        /// <summary>Gets or sets the role.</summary>
+        [ForeignKey("RoleId")]
+        public virtual Role Role { get; set; }
     }
 }

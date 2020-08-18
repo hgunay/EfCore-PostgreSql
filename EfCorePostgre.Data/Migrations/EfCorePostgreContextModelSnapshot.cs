@@ -17,7 +17,7 @@ namespace EfCorePostgre.Data.Migrations
             modelBuilder
                 .HasDefaultSchema("public")
                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn)
-                .HasAnnotation("ProductVersion", "3.1.6")
+                .HasAnnotation("ProductVersion", "3.1.7")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             modelBuilder.Entity("EfCorePostgre.Data.Domain.Public.Permission", b =>
@@ -72,7 +72,7 @@ namespace EfCorePostgre.Data.Migrations
                         new
                         {
                             Id = 1L,
-                            CreatedDateTime = new DateTime(2020, 8, 13, 21, 52, 9, 910, DateTimeKind.Utc).AddTicks(2878),
+                            CreatedDateTime = new DateTime(2020, 8, 18, 14, 22, 33, 244, DateTimeKind.Utc).AddTicks(3969),
                             CreatedUserId = 0L,
                             Description = "Permission 1 Açıklaması",
                             IsActive = true,
@@ -130,7 +130,7 @@ namespace EfCorePostgre.Data.Migrations
                         new
                         {
                             Id = 1L,
-                            CreatedDateTime = new DateTime(2020, 8, 13, 21, 52, 9, 909, DateTimeKind.Utc).AddTicks(3731),
+                            CreatedDateTime = new DateTime(2020, 8, 18, 14, 22, 33, 242, DateTimeKind.Utc).AddTicks(9950),
                             CreatedUserId = 0L,
                             Description = "Role 1 Açıklaması",
                             IsActive = true,
@@ -203,8 +203,8 @@ namespace EfCorePostgre.Data.Migrations
                             IsDeleted = false,
                             IsPasswordChangeFirstLogin = true,
                             LastName = "Admin",
-                            Password = "Admin123",
-                            PasswordSalt = "Admin123"
+                            Password = "KpkyZuPFMt/IZXatYgtN8scz+XU=",
+                            PasswordSalt = "0jPr9cdRgNguTizz9tGpU2rRbRfE3oXw0/HrsqZbXAXGq2lrsAUb1IqzJn5iHpbqoD9CW92jBimYFS8SJ6wStw=="
                         });
                 });
 
@@ -250,13 +250,17 @@ namespace EfCorePostgre.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("PermissionId");
+
+                    b.HasIndex("UserId");
+
                     b.ToTable("user_permission","public");
 
                     b.HasData(
                         new
                         {
                             Id = 1L,
-                            CreatedDateTime = new DateTime(2020, 8, 13, 21, 52, 9, 910, DateTimeKind.Utc).AddTicks(6777),
+                            CreatedDateTime = new DateTime(2020, 8, 18, 14, 22, 33, 249, DateTimeKind.Utc).AddTicks(5360),
                             CreatedUserId = 0L,
                             IsActive = true,
                             IsDeleted = false,
@@ -307,19 +311,53 @@ namespace EfCorePostgre.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("RoleId");
+
+                    b.HasIndex("UserId");
+
                     b.ToTable("user_role","public");
 
                     b.HasData(
                         new
                         {
                             Id = 1L,
-                            CreatedDateTime = new DateTime(2020, 8, 13, 21, 52, 9, 910, DateTimeKind.Utc).AddTicks(5894),
+                            CreatedDateTime = new DateTime(2020, 8, 18, 14, 22, 33, 249, DateTimeKind.Utc).AddTicks(3950),
                             CreatedUserId = 0L,
                             IsActive = true,
                             IsDeleted = false,
                             RoleId = 1L,
                             UserId = 1L
                         });
+                });
+
+            modelBuilder.Entity("EfCorePostgre.Data.Domain.Public.UserPermission", b =>
+                {
+                    b.HasOne("EfCorePostgre.Data.Domain.Public.Permission", "Permission")
+                        .WithMany()
+                        .HasForeignKey("PermissionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("EfCorePostgre.Data.Domain.Public.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("EfCorePostgre.Data.Domain.Public.UserRole", b =>
+                {
+                    b.HasOne("EfCorePostgre.Data.Domain.Public.Role", "Role")
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("EfCorePostgre.Data.Domain.Public.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

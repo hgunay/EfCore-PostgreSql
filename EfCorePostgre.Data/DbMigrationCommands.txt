@@ -15,4 +15,4 @@ Applying migration '20200724115651_InitialCreate'.
 Done.
 
 -- Rollback
-PM> dotnet ef migrations remove --project EfCorePostgre.Data -f
+PM> dotnet ef migrations remove --project EfCorePostgre.Data -fdotnet ef migrations remove --project EfCorePostgre.Data -f

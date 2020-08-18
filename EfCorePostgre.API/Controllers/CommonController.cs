@@ -15,6 +15,13 @@
         /// <summary>The heartbeat.</summary>
         /// <returns>The <see cref="ActionResult"/>.</returns>
         [HttpGet]
-        public ActionResult Heartbeat() => this.Ok(DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss.fff"));
+        public ActionResult Heartbeat() =>
+            /* Sample
+             *
+             * Method : Get
+             * Url    : http://localhost:5001/api/Common/Heartbeat
+             * 
+             */
+            this.Ok(DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss.fff"));
     }
 }

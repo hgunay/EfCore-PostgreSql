@@ -13,7 +13,7 @@
     /// <summary>The repository async.</summary>
     /// <typeparam name="TEntity">Entity type.</typeparam>
     public class RepositoryAsync<TEntity> : IRepositoryAsync<TEntity>
-            where TEntity : AuditEntity
+        where TEntity : BaseEntity
     {
         /// <summary>The db context.</summary>
         private readonly DbContext dbContext;
@@ -27,17 +27,14 @@
         /// <summary>The find by ıd.</summary>
         /// <param name="id">The id.</param>
         /// <returns>The <see cref="Task"/>.</returns>
-        public async Task<TEntity> FindById(long id) =>
-                await this.dbContext.Set<TEntity>()
-                          .FindAsync(id);
+        public async Task<TEntity> FindById(long id) => await this.dbContext.Set<TEntity>().FindAsync(id);
 
         /// <summary>The ınsert.</summary>
         /// <param name="entity">The entity.</param>
         /// <returns>The <see cref="Task"/>.</returns>
         public async Task<long> Insert(TEntity entity)
         {
-            await this.dbContext.Set<TEntity>()
-                      .AddAsync(entity);
+            await this.dbContext.Set<TEntity>().AddAsync(entity);
 
             await this.dbContext.SaveChangesAsync();
 
@@ -47,14 +44,11 @@
         /// <summary>The update.</summary>
         /// <param name="entity">The entity.</param>
         /// <returns>The <see cref="Task"/>.</returns>
-        public async Task<TEntity> Update(TEntity entity)
+        public async Task<long> Update(TEntity entity)
         {
-            this.dbContext.Entry(entity)
-                .State = EntityState.Modified;
+            this.dbContext.Entry(entity).State = EntityState.Modified;
 
-            await this.dbContext.SaveChangesAsync();
-
-            return entity;
+            return await this.dbContext.SaveChangesAsync();
         }
 
         /// <summary>The delete.</summary>
@@ -69,8 +63,9 @@
                 return false;
             }
 
-            this.dbContext.Set<TEntity>()
-                .Remove(entity);
+            entity.IsDeleted = true;
+
+            this.dbContext.Entry(entity).State = EntityState.Modified;
 
             return await this.dbContext.SaveChangesAsync() > 0;
         }
@@ -78,10 +73,7 @@
         /// <summary>The filter.</summary>
         /// <param name="predicate">The predicate.</param>
         /// <returns>The <see cref="Task"/>.</returns>
-        public async Task<IEnumerable<TEntity>> Filter(Expression<Func<TEntity, bool>> predicate) =>
-                await this.dbContext.Set<TEntity>()
-                          .Where(predicate)
-                          .ToListAsync();
+        public async Task<IEnumerable<TEntity>> Filter(Expression<Func<TEntity, bool>> predicate) => await this.dbContext.Set<TEntity>().Where(predicate).ToListAsync();
 
         #endregion
     }
