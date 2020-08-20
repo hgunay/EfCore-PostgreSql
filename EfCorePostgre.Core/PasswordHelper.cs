@@ -3,6 +3,7 @@
     using System;
     using System.Security.Cryptography;
     using System.Text;
+    using System.Xml.Linq;
 
     /// <summary>The password helper.</summary>
     public static class PasswordHelper
@@ -15,14 +16,11 @@
         {
             var bytePassword     = Encoding.Unicode.GetBytes(password);
             var bytePasswordSalt = Convert.FromBase64String(passwordSalt);
-            var byteBuffer       = new byte[bytePasswordSalt.Length + bytePassword.Length];
 
-            Buffer.BlockCopy(bytePasswordSalt, 0, byteBuffer, 0,                       bytePasswordSalt.Length);
-            Buffer.BlockCopy(bytePassword,     0, byteBuffer, bytePasswordSalt.Length, bytePassword.Length);
+            var byteRfc2898DeriveBytes = new Rfc2898DeriveBytes(bytePassword, bytePasswordSalt, 1000, HashAlgorithmName.SHA256);
+            var rfcHash = byteRfc2898DeriveBytes.GetBytes(64);
 
-            var byteEncryptSha1 = new SHA1CryptoServiceProvider().ComputeHash(byteBuffer);
-
-            return Convert.ToBase64String(byteEncryptSha1);
+            return Convert.ToBase64String(rfcHash);
         }
 
         /// <summary>The create salt.</summary>
@@ -30,9 +28,7 @@
         public static string CreateSaltPassword()
         {
             var saltBytes = new byte[64];
-            var rng       = new RNGCryptoServiceProvider();
-
-            rng.GetNonZeroBytes(saltBytes);
+            new RNGCryptoServiceProvider().GetNonZeroBytes(saltBytes);
 
             return Convert.ToBase64String(saltBytes);
         }
